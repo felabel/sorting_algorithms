@@ -27,7 +27,7 @@ void selection_sort(int *array, size_t size)
 		current = array[i];
 		array[i] = array[temp];
 		array[temp] = current;
-		if (swapCount > 0)
+		if (swapCount != 0)
 		{
 			print_array(array, size);
 		}
