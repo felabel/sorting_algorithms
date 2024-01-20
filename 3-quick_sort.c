@@ -5,9 +5,9 @@
  * @d: integer to be swapped
  */
 
-void swap_elements_fk(int *x, int *d)
+void swap_elements_fk(size_t *x, size_t *d)
 {
-	int t = *x;
+	size_t t = *x;
 	*x = *d;
 	*d = t;
 }
@@ -21,7 +21,7 @@ void swap_elements_fk(int *x, int *d)
  * Return: integer value
  */
 
-int partition(int *array, int min_index_fk, int max_index_fk, size_t size)
+int partition(size_t *array, size_t min_index_fk, size_t max_index_fk, size_t size)
 {
 	int pivot = array[max_index_fk], i = (min_index_fk - 1), j;
 
@@ -47,7 +47,7 @@ int partition(int *array, int min_index_fk, int max_index_fk, size_t size)
  * @size: size of the array
  */
 
-void rcsv_sort(int *array, int min_index_fk, int max_index_fk, size_t size)
+void rcsv_sort(size_t *array, size_t min_index_fk, size_t max_index_fk, size_t size)
 {
 	if (min_index_fk < max_index_fk)
 	{
