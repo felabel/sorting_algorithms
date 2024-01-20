@@ -1,2 +1,2 @@
-# sorting_algorithms
-sorting techniques .
+# sorting_algorITHMS
+learning sorting techniques
