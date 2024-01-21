@@ -1,10 +1,10 @@
 #include "sort.h"
 /**
-*swap_elements_fkwap - swap 2 elements
-*@array: array
-*@x: element to swap
-*@d: element to swap
-*/
+ *swap_elements_fkwap - swap 2 elements
+ *@array: array
+ *@x: element to swap
+ *@d: element to swap
+ */
 void swap_elements_fkwap(int *array, ssize_t x, ssize_t d)
 {
 	int tmp;
@@ -17,8 +17,8 @@ void swap_elements_fkwap(int *array, ssize_t x, ssize_t d)
 /**
  *lomuto_partition - lomuto lomuto_partition sorting scheme implementation
  *@array: array
- *@min_index_fk: last element in the array 
- *@max_index_fk: first element in the array 
+ *@min_index_fk: last element in the array
+ *@max_index_fk: first element in the array
  *@size: size array
  *Return: return the position of the last element sorted
  */
