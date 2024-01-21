@@ -3,10 +3,18 @@
 
 #include <stdlib.h>
 
-typedef struct listint_s {
-    const int n;
-    struct listint_s *prev;
-    struct listint_s *next;
+/**
+ * struct listint_s - create a doubly linked node
+ * @n: data item
+ * @prev: pointer to previous node
+ * @next: pointer to next node
+ */
+
+typedef struct listint_s
+{
+	const int n;
+	struct listint_s *prev;
+	struct listint_s *next;
 } listint_t;
 
 void print_array(const int *array, size_t size);
