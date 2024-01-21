@@ -15,14 +15,14 @@ void swap_elements_fkwap(int *array, ssize_t x, ssize_t d)
 }
 
 /**
- *partition - lomuto partition sorting scheme implementation
+ *lomuto_partition - lomuto lomuto_partition sorting scheme implementation
  *@array: array
  *@min_index_fk: last element in the array 
  *@max_index_fk: first element in the array 
  *@size: size array
  *Return: return the position of the last element sorted
  */
-int partition(int *array, ssize_t min_index_fk, ssize_t max_index_fk, size_t size)
+int lomuto_partition(int *array, ssize_t min_index_fk, ssize_t max_index_fk, size_t size)
 {
 	int pivot = array[max_index_fk];
 	ssize_t current = min_index_fk, j;
@@ -60,7 +60,7 @@ void rcsv_sort(int *array, ssize_t min_index_fk, ssize_t max_index_fk, int size)
 
 	if (min_index_fk < max_index_fk)
 	{
-		position = partition(array, min_index_fk, max_index_fk, size);
+		position = lomuto_partition(array, min_index_fk, max_index_fk, size);
 
 		rcsv_sort(array, min_index_fk, position - 1, size);
 		rcsv_sort(array, position + 1, max_index_fk, size);
