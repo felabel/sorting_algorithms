@@ -15,14 +15,14 @@ void swap_elements_fk(int *array, ssize_t x, ssize_t d)
 }
 
 /**
- *partarr - lomuto_partition sorting scheme implementation
+ *partar - lomuto_partition sorting scheme implementation
  *@array: array
  *@min_index_fk: last element in the array
  *@max_index_fk: first element in the array
  *@size: size array
  *Return: return the position of the last element sorted
  */
-int partarr(int *array, ssize_t min_index_fk, ssize_t max_index_fk, size_t size)
+int partar(int *array, ssize_t min_index_fk, ssize_t max_index_fk, size_t size)
 {
 	int pivot = array[max_index_fk];
 	ssize_t current = min_index_fk, j;
@@ -47,23 +47,23 @@ int partarr(int *array, ssize_t min_index_fk, ssize_t max_index_fk, size_t size)
 	return (current);
 }
 /**
- *rcsv_sort - divides the array into left and right around the pivot
+ *rcsv_srt - divides the array into left and right around the pivot
  *@array: array
  *@min_index_fk: lowest array element
  *@max_index_fk: highest array element
  *@size: array size
  */
-void rcsv_sort(int *array, ssize_t min_index_fk, ssize_t max_index_fk, int size)
+void rcsv_srt(int *array, ssize_t min_index_fk, ssize_t max_index_fk, int size)
 {
 	ssize_t position = 0;
 
 
 	if (min_index_fk < max_index_fk)
 	{
-		position = partarr(array, min_index_fk, max_index_fk, size);
+		position = partar(array, min_index_fk, max_index_fk, size);
 
-		rcsv_sort(array, min_index_fk, position - 1, size);
-		rcsv_sort(array, position + 1, max_index_fk, size);
+		rcsv_srt(array, min_index_fk, position - 1, size);
+		rcsv_srt(array, position + 1, max_index_fk, size);
 	}
 }
 /**
@@ -75,5 +75,5 @@ void quick_sort(int *array, size_t size)
 {
 	if (!array || size < 2)
 		return;
-	rcsv_sort(array, 0, size - 1, size);
+	rcsv_srt(array, 0, size - 1, size);
 }
