@@ -1,78 +1,79 @@
 #include "sort.h"
 /**
-*swap - the positions of two elements into an array
+*swap_elements_fkwap - swap 2 elements
 *@array: array
-*@item1: array element
-*@item2: array element
+*@x: element to swap
+*@d: element to swap
 */
-void swap(int *array, ssize_t item1, ssize_t item2)
+void swap_elements_fkwap(int *array, ssize_t x, ssize_t d)
 {
 	int tmp;
 
-	tmp = array[item1];
-	array[item1] = array[item2];
-	array[item2] = tmp;
+	tmp = array[x];
+	array[x] = array[d];
+	array[d] = tmp;
 }
+
 /**
- *lomuto_partition - lomuto partition sorting scheme implementation
+ *partition - lomuto partition sorting scheme implementation
  *@array: array
- *@first: first array element
- *@last: last array element
+ *@min_index_fk: last element in the array 
+ *@max_index_fk: first element in the array 
  *@size: size array
  *Return: return the position of the last element sorted
  */
-int lomuto_partition(int *array, ssize_t first, ssize_t last, size_t size)
+int partition(int *array, ssize_t min_index_fk, ssize_t max_index_fk, size_t size)
 {
-	int pivot = array[last];
-	ssize_t current = first, finder;
+	int pivot = array[max_index_fk];
+	ssize_t current = min_index_fk, j;
 
-	for (finder = first; finder < last; finder++)
+	for (j = min_index_fk; j < max_index_fk; j++)
 	{
-		if (array[finder] < pivot)
+		if (array[j] < pivot)
 		{
-			if (array[current] != array[finder])
+			if (array[current] != array[j])
 			{
-				swap(array, current, finder);
+				swap_elements_fkwap(array, current, j);
 				print_array(array, size);
 			}
 			current++;
 		}
 	}
-	if (array[current] != array[last])
+	if (array[current] != array[max_index_fk])
 	{
-		swap(array, current, last);
+		swap_elements_fkwap(array, current, max_index_fk);
 		print_array(array, size);
 	}
 	return (current);
 }
 /**
- *qs - qucksort algorithm implementation
+ *rcsv_sort - divides the array into left and right around the pivot
  *@array: array
- *@first: first array element
- *@last: last array element
+ *@min_index_fk: lowest array element
+ *@max_index_fk: highest array element
  *@size: array size
  */
-void qs(int *array, ssize_t first, ssize_t last, int size)
+void rcsv_sort(int *array, ssize_t min_index_fk, ssize_t max_index_fk, int size)
 {
 	ssize_t position = 0;
 
 
-	if (first < last)
+	if (min_index_fk < max_index_fk)
 	{
-		position = lomuto_partition(array, first, last, size);
+		position = partition(array, min_index_fk, max_index_fk, size);
 
-		qs(array, first, position - 1, size);
-		qs(array, position + 1, last, size);
+		rcsv_sort(array, min_index_fk, position - 1, size);
+		rcsv_sort(array, position + 1, max_index_fk, size);
 	}
 }
 /**
- *quick_sort - prepare the terrain to quicksort algorithm
- *@array: array
+ *quick_sort - returns the sorted array
+ *@array: array to be sorted
  *@size: array size
  */
 void quick_sort(int *array, size_t size)
 {
 	if (!array || size < 2)
 		return;
-	qs(array, 0, size - 1, size);
+	rcsv_sort(array, 0, size - 1, size);
 }
