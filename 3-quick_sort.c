@@ -1,11 +1,11 @@
 #include "sort.h"
 /**
- *swap_elements_fkwap - swap 2 elements
+ *swap_elements_fk - swap 2 elements
  *@array: array
  *@x: element to swap
  *@d: element to swap
  */
-void swap_elements_fkwap(int *array, ssize_t x, ssize_t d)
+void swap_elements_fk(int *array, ssize_t x, ssize_t d)
 {
 	int tmp;
 
@@ -15,14 +15,14 @@ void swap_elements_fkwap(int *array, ssize_t x, ssize_t d)
 }
 
 /**
- *lomuto_partition - lomuto_partition sorting scheme implementation
+ *partarr - lomuto_partition sorting scheme implementation
  *@array: array
  *@min_index_fk: last element in the array
  *@max_index_fk: first element in the array
  *@size: size array
  *Return: return the position of the last element sorted
  */
-int lomuto_partition(int *array, ssize_t min_index_fk, ssize_t max_index_fk, size_t size)
+int partarr(int *array, ssize_t min_index_fk, ssize_t max_index_fk, size_t size)
 {
 	int pivot = array[max_index_fk];
 	ssize_t current = min_index_fk, j;
@@ -33,7 +33,7 @@ int lomuto_partition(int *array, ssize_t min_index_fk, ssize_t max_index_fk, siz
 		{
 			if (array[current] != array[j])
 			{
-				swap_elements_fkwap(array, current, j);
+				swap_elements_fk(array, current, j);
 				print_array(array, size);
 			}
 			current++;
@@ -41,7 +41,7 @@ int lomuto_partition(int *array, ssize_t min_index_fk, ssize_t max_index_fk, siz
 	}
 	if (array[current] != array[max_index_fk])
 	{
-		swap_elements_fkwap(array, current, max_index_fk);
+		swap_elements_fk(array, current, max_index_fk);
 		print_array(array, size);
 	}
 	return (current);
@@ -60,7 +60,7 @@ void rcsv_sort(int *array, ssize_t min_index_fk, ssize_t max_index_fk, int size)
 
 	if (min_index_fk < max_index_fk)
 	{
-		position = lomuto_partition(array, min_index_fk, max_index_fk, size);
+		position = partarr(array, min_index_fk, max_index_fk, size);
 
 		rcsv_sort(array, min_index_fk, position - 1, size);
 		rcsv_sort(array, position + 1, max_index_fk, size);
