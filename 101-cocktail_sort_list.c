@@ -1,8 +1,31 @@
 #include "sort.h"
 #include <stdio.h>
-
 /**
- *cocktail_sort_list - sorts an array with the cokatail method
+ *swap_node - swap a node for his previous one
+ *@node: node
+ *@list: node list
+ *Return: return a pointer to a node which was enter it
+ */
+listint_t *swap_node(listint_t *node, listint_t **list)
+{
+	listint_t *back = node->prev, *current = node;
+	/*NULL, 19, 48, 9, 71, 13, NULL*/
+
+	back->next = current->next;
+	if (current->next)
+		current->next->prev = back;
+	current->next = back;
+	current->prev = back->prev;
+	back->prev = current;
+	if (current->prev)
+		current->prev->next = current;
+	else
+		*list = current;
+	return (current);
+}
+/**
+ *cocktail_sort_list - this is a cocktail sort implementation
+ *working on a double linked lists
  *@list: list
  */
 void cocktail_sort_list(listint_t **list)
@@ -41,29 +64,4 @@ void cocktail_sort_list(listint_t **list)
 				node = node->prev;
 		}
 	}
-}
-
-/**
- * swap_node - swaps the nodes of a doubly linked list
- * @node: node to be swapped
- * @list: list to be sorted
- * Return: node
- */
-
-listint_t *swap_node(listint_t *node, listint_t **list)
-{
-	listint_t *prv_node = node->prev, *cur_node = node;
-
-
-	prv_node->next = cur_node->next;
-	if (cur_node->next)
-		cur_node->next->prev = prv_node;
-	cur_node->next = prv_node;
-	cur_node->prev = prv_node->prev;
-	prv_node->prev = cur_node;
-	if (cur_node->prev)
-		cur_node->prev->next = cur_node;
-	else
-		*list = cur_node;
-	return (cur_node);
 }
