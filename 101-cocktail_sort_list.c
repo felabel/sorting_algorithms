@@ -52,7 +52,9 @@ void cocktail_sort_list(listint_t **list)
 listint_t *swap_node(listint_t *node, listint_t **list)
 {
 	listint_t *prv_node = node->prev, *cur_node = node;
+
 	prv_node->next = cur_node->next;
+
 	if (cur_node->next)
 		cur_node->next->prev = prv_node;
 	cur_node->next = prv_node;
