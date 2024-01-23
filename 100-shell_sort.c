@@ -16,10 +16,10 @@ void swap_elements_fk(int *array, int x, int d)
 	array[d] = tmp;
 }
 /**
- * shell_sort - function that sorts an array of integers in ascending
- * order using the Shell sort algorithm, using the Knuth sequence
- * @size: size of the array
- * @array: list with numbers
+ * shell_sort - sorts an array of integers in ascending
+ * order using the Shell sort algorithm and the Knuth sequence
+ * @size: array size
+ * @array: array to be sorted
  */
 void shell_sort(int *array, size_t size)
 {
